@@ -8,9 +8,13 @@ $(document).ready(function(){
     $('.navbar').toggleClass('active');
   });
 
+  $('.navbar a').click(function(){
+    $('#menu-btn').removeClass('fa-times');
+    $('.navbar').removeClass('active');
+  });
+
   /*--------------- Scroll-Top ---------------*/
   $(window).on('scroll',function(){
-    
     $('#menu-btn').removeClass('fa-times');
     $('.navbar').removeClass('active');
 
@@ -21,15 +25,14 @@ $(document).ready(function(){
       $(".header").removeClass("sticky");
     }
 
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 100) {
-        $('.scroll-top').fadeIn();
-      } else {
-        $('.scroll-top').fadeOut();
-      }
-    });
-
+    if ($(window).scrollTop() > 100) {
+      $('.scroll-top').fadeIn();
+    } else {
+      $('.scroll-top').fadeOut();
+    }
   });
+
+  $(window).trigger('scroll');
 
 });
 

@@ -6,28 +6,55 @@
 }
 
 @media (max-width: 768px){
+    :root{
+        --anchor-offset: 6.8rem;
+    }
+
+    header{
+        padding: 1.5rem 2rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-right{
+        gap: 1rem;
+    }
+
     header #menu-btn{
         display: block;
-      } 
+        order: 3;
+    } 
+
+    .theme-toggle{
+        order: 2;
+        margin: 0;
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 1.4rem;
+        border-width: 0.15rem;
+    }
   
-      .header .navbar{
-        width: 30rem;
+    .header .navbar{
+        width: min(95vw, 30rem);
         position: absolute;
-        right: 0; 
-        top:100%;
-        padding: 0rem 2rem;
-        background: #F7F5F2;
-        border: 0.1rem solid #BC8CF2;
+        right: 1rem; 
+        top: calc(100% + 0.5rem);
+        padding: 1.5rem 1.5rem;
+        background: var(--surface);
+        border: 0.1rem solid var(--card-border);
+        border-radius: 1rem;
         -webkit-transition: 0.2s linear;
         -moz-transition: 0.2s linear;
         -o-transition: 0.2s linear;
         transition: 0.2s linear;
         -webkit-transform: translateX(100%);
         transform: translateX(100%);
-        height: calc(100vh - 6rem);
+        height: calc(100dvh - 8rem);
         overflow-y: auto;
-        -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        display: block;
     }
   
     .header .navbar.active{
@@ -37,9 +64,28 @@
   
     .header .navbar a{
         display: block;
-        color: #000000;
+        color: var(--text);
         padding: 1.5rem 0;
         margin: 1rem 0;
+    }
+
+    .home{
+        padding-top: 11rem;
+    }
+
+    .home .box-container{
+        min-height: calc(100dvh - 11rem);
+        gap: 2.5rem;
+    }
+
+    .home .content,
+    .home .image{
+        flex: 1 1 100%;
+    }
+
+    .home .image img{
+        width: min(82vw, 34rem);
+        height: min(82vw, 34rem);
     }
   
     .navbar::-webkit-scrollbar{
@@ -64,6 +110,21 @@
 @media (max-width: 450px){
     html{
         font-size: 50%;
+    }
+
+    .home{
+        padding-top: 9.5rem;
+    }
+
+    .home .box-container{
+        min-height: calc(100dvh - 9.5rem);
+    }
+
+    .theme-toggle{
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 1.2rem;
+        border-width: 0.12rem;
     }
 
     section, header{

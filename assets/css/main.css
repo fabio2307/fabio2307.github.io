@@ -1,4 +1,4 @@
-/* Table of Contents
+﻿/* Table of Contents
 ----------------------------------
 
 0- Global CSS
@@ -8,13 +8,9 @@
 4- Home Area CSS
 5- About Area CSS
 6- Qualification Area CSS 
-7- Services Area CSS
-8- Portfolio Area CSS
-9- Testimonials Area CSS
-10- Blog Area CSS
-11- Contact Area CSS
-12- Footer Area CSS
-13- Scroll-Top Area CSS
+7- Contact Area CSS
+8- Footer Area CSS
+9- Scroll-Top Area CSS
 
 */
 
@@ -27,6 +23,70 @@
     --black: #000000;
     --white: #F7F5F2;
     --grey: #DFDFDE;
+    --bg: #000000;
+    --surface: #111111;
+    --surface-soft: #1a1a1a;
+    --text: #F7F5F2;
+    --text-muted: #DFDFDE;
+    --card-border: rgba(188, 140, 242, 0.25);
+    --anchor-offset: 7.2rem;
+}
+
+html, body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+body[data-theme='dark']{
+    --bg: #000000;
+    --surface: #111111;
+    --surface-soft: #1a1a1a;
+    --text: #F7F5F2;
+    --text-muted: #DFDFDE;
+    --card-border: rgba(188, 140, 242, 0.25);
+    --black: #000000;
+    --white: #F7F5F2;
+    --grey: #DFDFDE;
+}
+
+body[data-theme='light']{
+    --bg: #f4f5fa;
+    --surface: #ffffff;
+    --surface-soft: #f1f2f8;
+    --text: #111111;
+    --text-muted: #666666;
+    --card-border: rgba(188, 140, 242, 0.2);
+    --black: #f4f5fa;
+    --white: #111111;
+    --grey: #666666;
+}
+
+body[data-theme='light'] .heading h2 span,
+body[data-theme='light'] .about .content h2,
+body[data-theme='light'] .home .content h1,
+body[data-theme='light'] .home .content h2,
+body[data-theme='light'] .about .content p,
+body[data-theme='light'] .experience-item h3,
+body[data-theme='light'] .experience-item p,
+body[data-theme='light'] .contact-info h3,
+body[data-theme='light'] .contact-info > p,
+body[data-theme='light'] .contact-info .social-links span,
+body[data-theme='light'] .contact-form .box{
+    color: var(--text);
+}
+
+body[data-theme='light'] .heading h2 span::before{
+    background: rgba(188, 140, 242, 0.35);
+}
+
+body[data-theme='light'] .home .content h2,
+body[data-theme='light'] .home .content h1,
+body[data-theme='light'] .about-info .info h4,
+body[data-theme='light'] .about-info .info h4 span,
+body[data-theme='light'] .skill-card h3,
+body[data-theme='light'] .stat-card h3,
+body[data-theme='light'] .stat-card p{
+    color: var(--text);
 }
 
 *{
@@ -54,11 +114,11 @@ html{
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: var(--anchor-offset);
 }
 
-body{
-    background-color: var(--black);
+section[id]{
+    scroll-margin-top: var(--anchor-offset);
 }
 
 section{
@@ -75,19 +135,7 @@ section{
 }
 
 ::-webkit-scrollbar-track{
-    background-color: var(--black);
-}
-
-.swiper-pagination-bullet{
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50rem;
-    background-color: var(--grey);
-}
-
-.swiper-pagination-bullet-active{
-    width: 3rem;
-    background: var(--purple);
+    background-color: var(--surface);
 }
 
 /*--------------------- 0- Global CSS (End) ---------------------*/
@@ -167,6 +215,7 @@ header{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    gap: 1rem;
     background: transparent;
     -webkit-transition: all 0.5s linear;
        -moz-transition: all 0.5s linear;
@@ -188,8 +237,31 @@ header .logo h2{
     letter-spacing: 0.2rem;
 }
 
+.header-right{
+    margin-left: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    gap: 1.2rem;
+}
+
+header .navbar{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
 header .navbar a{
-    color: var(--white);
+    color: var(--text);
     font-size: 1.8rem;
     margin-left: 1rem;
 }
@@ -201,7 +273,7 @@ header .navbar a.active{
 
 header #menu-btn{
     font-size: 3rem;
-    color: var(--white);
+    color: var(--text);
     cursor: pointer;
     -webkit-transition: all 0.5s linear;
        -moz-transition: all 0.5s linear;
@@ -219,19 +291,47 @@ header #menu-btn:hover{
     color: var(--purple);
 }
 
+.theme-toggle{
+    width: 4rem;
+    height: 4rem;
+    min-width: 4rem;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background: var(--surface);
+    color: var(--purple);
+    font-size: 1.6rem;
+    border: 0.2rem solid var(--purple);
+    cursor: pointer;
+    margin: 0;
+    z-index: 1000;
+}
+
+.theme-toggle:hover{
+    background: var(--purple);
+    color: var(--white);
+}
+
 /*--------------------- 3- Header Area CSS (End) ---------------------*/
 
 
 
 /*--------------------- 4- Home Area CSS (Start) ---------------------*/
 .home{
-    padding: 0rem 5%;
-    background-color: var(--black);
+    padding: 10rem 5% 0;
+    background-color: var(--bg);
     min-height: 100vh;
 }
 
 .home .box-container{
-    min-height: 100vh;
+    min-height: calc(100vh - 10rem);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -278,7 +378,7 @@ header #menu-btn:hover{
     -ms-flex-align: center;
     align-items: center;
 
-    margin-top: 7rem;
+    margin-top: 0;
 }
 
 .home .content h2{
@@ -376,56 +476,18 @@ header #menu-btn:hover{
 
 .about .content .about-info .info h4{
     font-size: 1.6rem;
-    color: var(--white);
+    color: var(--text);
     padding-bottom: 1rem;
 }
 
 .about .content .about-info .info span{
     font-size: 1.6rem;
     font-weight: 400;
-    color: var(--grey);
+    color: var(--text-muted);
 }
 
 .about .content .about-info .info .btn{
     margin-top: 1rem;
-}
-
-.counting{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 35rem;
-        flex: 1 1 35rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.counting .box{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 18rem;
-        flex: 1 1 18rem;
-    text-align: center;
-    background-color: #222;
-    padding: 2rem;
-}
-
-.counting .box .count{
-    font-size: 3.5rem;
-    color: var(--purple);
-    padding-bottom: 0.5rem;
-}
-
-.counting .box h3{
-    font-size: 1.8rem;
-    color: var(--white);
 }
 
 .skill-container{
@@ -437,69 +499,186 @@ header #menu-btn:hover{
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 2rem;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
-.skill-item{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 30rem;
-        flex: 1 1 30rem;
-    margin-right: 1.5rem;
+.skill-card{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 15rem;
+    flex: 0 1 15rem;
+    background: var(--surface);
+    border: 0.2rem solid var(--purple);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.skill-item .box{
-    padding:1rem 0;
+.skill-card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(188, 140, 242, 0.3), transparent);
+    -webkit-transition: left 0.5s ease;
+    -moz-transition: left 0.5s ease;
+    -o-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+    z-index: 0;
 }
 
- .skill-item .box h3{
+.skill-card:hover{
+    border-color: var(--purple);
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+    -o-transform: translateY(-1rem);
+    transform: translateY(-1rem);
+    -webkit-box-shadow: 0 1rem 2rem rgba(188, 140, 242, 0.3);
+    box-shadow: 0 1rem 2rem rgba(188, 140, 242, 0.3);
+}
+
+.skill-card:hover::before{
+    left: 100%;
+}
+
+.skill-icon{
+    font-size: 4rem;
+    color: var(--purple);
+    margin-bottom: 1rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding:.7rem 0;
-    font-size: 1.7rem;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon{
+    -webkit-transform: scale(1.2) rotate(10deg);
+    -moz-transform: scale(1.2) rotate(10deg);
+    -o-transform: scale(1.2) rotate(10deg);
+    transform: scale(1.2) rotate(10deg);
     color: var(--white);
-    font-weight: 400;
 }
 
- .skill-item .box .progress-bar{
-    width:100%;
-    background:#222;
-    overflow:hidden;
-    height:1rem;
-    border-radius: 50rem;
+.skill-card h3{
+    font-size: 1.8rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
- .skill-item .box .progress-bar span{
-    display:block;
-    height:100%;
-    background: var(--purple);
+.skill-card p{
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    line-height: 2rem;
 }
 
- .skill-item.item1 .box:nth-child(1) .progress-bar span{
-    width:40%;
+.stats-grid{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
- .skill-item.item1 .box:nth-child(2) .progress-bar span{
-    width:40%;
+.stat-card{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 15rem;
+    flex: 0 1 15rem;
+    padding: 1.8rem 1.5rem;
+    border-radius: 1rem;
+    background: var(--surface);
+    border: 0.1rem solid var(--card-border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
- .skill-item.item1 .box:nth-child(3) .progress-bar span{
-    width:60%;
+.stat-card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(188, 140, 242, 0.3), transparent);
+    -webkit-transition: left 0.5s ease;
+    -moz-transition: left 0.5s ease;
+    -o-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+    z-index: 0;
 }
 
-.skill-item.item2 .box:nth-child(1) .progress-bar span{
-    width:60%;
+.stat-card:hover{
+    border-color: var(--purple);
+    -webkit-transform: translateY(-1rem);
+    -moz-transform: translateY(-1rem);
+    -o-transform: translateY(-1rem);
+    transform: translateY(-1rem);
+    -webkit-box-shadow: 0 1rem 2rem rgba(188, 140, 242, 0.3);
+    box-shadow: 0 1rem 2rem rgba(188, 140, 242, 0.3);
 }
 
- .skill-item.item2 .box:nth-child(2) .progress-bar span{
-    width:92%;
+.stat-card:hover::before{
+    left: 100%;
 }
 
- .skill-item.item2 .box:nth-child(3) .progress-bar span{
-    width:60%;
+.stat-card i{
+    font-size: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 1rem;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover i{
+    -webkit-transform: scale(1.2) rotate(10deg);
+    -moz-transform: scale(1.2) rotate(10deg);
+    -o-transform: scale(1.2) rotate(10deg);
+    transform: scale(1.2) rotate(10deg);
+    color: var(--white);
+}
+
+.stat-card h3{
+    font-size: 3rem;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+}
+
+.stat-card p{
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    line-height: 2.2rem;
 }
 
 /*--------------------- 5- About Area CSS (End) ---------------------*/
@@ -533,438 +712,54 @@ header #menu-btn:hover{
     -webkit-box-flex: 1;
     -ms-flex: 1 1 40rem;
         flex: 1 1 40rem;
-    padding: 0 3rem 2rem 3rem;
-    border-left: 0.2rem solid var(--purple);
+    padding: 2.5rem 2.5rem 2.5rem 3rem;
+    border-left: 0.4rem solid var(--purple);
     margin-left: 2rem;
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12);
 }
 
 .experience-item i{
     position: absolute;
-    top: 0; 
-    left: -2.5rem;
+    top: 1rem; 
+    left: -3rem;
     height:5rem;
     width: 5rem;
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
     font-size: 2rem;
-    color:var(--white);
-    background:var(--purple);
+    color: var(--white);
+    background: var(--purple);
 }
 
 .experience-item .content{
     border-radius: 0.5rem;
-    padding: 1rem 2rem;
-    border-left: 2rem;
+    padding: 0;
 }
 
 .experience-item span{
-    background: #222;
-    color: var(--white);
-    padding: 0.5rem 1.5rem;
+    background: var(--surface-soft);
+    color: var(--text);
+    padding: 0.6rem 1.5rem;
     font-size: 1.8rem;
     border-radius: 50rem;
 }
 
 .experience-item h3{
     font-size: 2.5rem;
-    color: var(--white);
+    color: var(--text);
     padding: 2rem 0;
 }
 
 .experience-item p{
-    color: var(--grey);
+    color: var(--text-muted);
     font-size: 1.6rem;
     line-height: 2.5rem;
 }
 
 /*--------------------- 6- Qualification Area CSS (End) ---------------------*/
-
-
-
-/*--------------------- 7- Services Area CSS (Start) ---------------------*/
-.service .box-container{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
-
-.service-item{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 33rem;
-        flex: 1 1 33rem;
-    background-color: var(--black);
-    padding: 4rem 3rem;
-    text-align: center;
-    border: 0.1rem solid rgba(255,255, 255, 0.3);
-    border-radius: 0.5rem;
-    -webkit-transition: all 0.5s linear;
-       -moz-transition: all 0.5s linear;
-         -o-transition: all 0.5s linear;
-            transition: all 0.5s linear;
-}
-
-.service-item:hover{
-    background-color: var(--purple);
-}
-
-.service-item i{
-    color: var(--white);
-    font-size: 4rem;
-}
-
-.service-item h3{
-    font-size: 2rem;
-    color: var(--white);
-    padding: 1.5rem 0;
-}
-
-.service-item p{
-    font-size: 1.6rem;
-    color: var(--grey);
-    line-height: 1.6;
-}
-
-.service-item:hover p{
-    color: var(--white);
-}
-
-/*--------------------- 7- Services Area CSS (End) ---------------------*/
-
-
-
-/*--------------------- 8- Portfolio Area CSS (Start) ---------------------*/
-.controls{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin-top: 2rem;
-}
-
-.controls .button{
-    cursor: pointer;
-    margin: 0.5rem;
-}
-
-.controls .button.active{
-    cursor: pointer;
-    background-color: var(--purple);
-    color: var(--white);
-}
-
-.portfolio .box-container{
-    display: -ms-grid;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
-    gap: 0.5rem;
-    padding: 2rem 0; 
-}
-
-.portfolio-item{
-    border-radius: 0.5rem;
-    height: 25rem;
-    overflow: hidden;
-    position: relative;
-}
-
-.portfolio-item img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.portfolio-item .content{
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    height: 80%;
-    width: 80%;
-    border-radius: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-transform: scale(0);
-            transform: scale(0);
-}
-
-.portfolio-item .content h4{
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--purple);
-    transform-origin: top;
-    -webkit-transform: translateY(-10rem);
-            transform: translateY(-10rem);
-    opacity: 0;
-    padding-bottom: 1rem;
-    -webkit-transition: all 0.4s linear;
-       -moz-transition: all 0.4s linear;
-         -o-transition: all 0.4s linear;
-            transition: all 0.4s linear;
-}
-
-.portfolio-item .content p{
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--white);
-    transform-origin: top;
-    -webkit-transform: translateY(-10rem);
-            transform: translateY(-10rem);
-    opacity: 0;
-    -webkit-transition: all 0.4s linear;
-       -moz-transition: all 0.4s linear;
-         -o-transition: all 0.4s linear;
-            transition: all 0.4s linear;
-}
-
-.portfolio-item .content .view-btn{
-    font-size: 2rem;
-    color: var(--purple);
-    transform-origin: top;
-    -webkit-transform: translateY(-10rem);
-            transform: translateY(-10rem);
-    opacity: 0;
-    -webkit-transition: all 0.4s linear;
-       -moz-transition: all 0.4s linear;
-         -o-transition: all 0.4s linear;
-            transition: all 0.4s linear;
-    border-radius: 5rem;
-    margin-top: 1.5rem;
-}
-
-.portfolio-item:hover .content{
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-
-.portfolio-item:hover .content h4{
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-}
-
-.portfolio-item:hover .content p{
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-}
-
-.portfolio-item:hover .content .view-btn{
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-}
-
-.portfolio-item:hover img{
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-}
-
-/*CSS3 Animation Effects for Magnific Popup*/
-
-/* start state */
-.mfp-newspaper  .mfp-with-anim {
-    opacity: 0;
-    -webkit-transition: all 0.2s ease-in-out; 
-            transition: all 0.2s ease-in-out; 
-
-    -webkit-transform: scale(0) rotate(500deg);
-            transform: scale(0) rotate(500deg);
-}
-.mfp-newspaper.mfp-bg {
-    opacity: 0;
-    -webkit-transition: all 0.2s ease-in-out; 
-            transition: all 0.2s ease-in-out; 
-}
-  
-/* animate in */
-.mfp-newspaper.mfp-ready .mfp-with-anim {
-    opacity: 1;
-    -webkit-transform: scale(1) rotate(0deg);
-            transform: scale(1) rotate(0deg);
-}
-.mfp-newspaper.mfp-ready.mfp-bg {
-    opacity: 0.8;
-}
-  
-/* animate out */
-.mfp-newspaper.mfp-removing .mfp-with-anim {
-    -webkit-transform: scale(0) rotate(500deg);
-            transform: scale(0) rotate(500deg);
-    opacity: 0;
-}
-.mfp-newspaper.mfp-removing.mfp-bg {
-    opacity: 0;
-}
-
-
-/*--------------------- 8- Portfolio Area CSS (End) ---------------------*/
-
-
-
-/*--------------------- 9- Testimonials Area CSS (Start) ---------------------*/
-.testimonial-slider{
-    position: relative;
-    padding-bottom: 4rem;
-    overflow: hidden;
-}
-
-.testi-item{
-    text-align: center;
-    border: 0.1rem solid var(--grey);
-    border-radius: 0.5rem;
-    padding: 4rem 2rem;
-}
-
-.testi-item:hover{
-    border-color: var(--purple);
-}
-
-.testi-item img{
-    height: 10rem;
-    width: 10rem;
-    border-radius: 50%;
-    border: 0.5rem solid var(--white);
-}
-
-.testi-item .fa-quote-left{
-    display: block;
-    font-size: 3rem;
-    color: var(--white);
-    margin: 1rem 0;
-}
-
-.testi-item p{
-    color: var(--grey);
-    font-size: 1.5rem;
-    line-height: 1.5;
-}
-
-.testi-item .intro{
-    margin: 1rem 0;
-}
-
-.testi-item .intro h3{
-    font-size: 2rem;
-    color: var(--white);
-    padding-bottom: 0.5rem;
-}
-
-.testi-item .intro h5{
-    color: var(--purple);
-    font-size: 1.4rem;
-    font-weight: 400;
-}
-
-/*--------------------- 9- Testimonials Area CSS (End) ---------------------*/
-
-
-
-/*--------------------- 10- Blog Area CSS (Start) ---------------------*/
-.blog-slider{
-    position: relative;
-    padding-bottom: 4rem;
-    overflow: hidden;
-}
-
-.blog-item{
-    background-color: #222;
-    border: 0.1rem solid rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-.blog-item .image{
-    height: 25rem;
-    overflow: hidden;
-}
-
-.blog-item:hover .image img{
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-}
-
-.blog-item .image img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.blog-item .content{
-    padding: 2rem 1rem;
-}
-
-.blog-item .content .intro{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    border-bottom: 0.2rem solid var(--grey);
-    padding: 1rem 0;
-    margin-bottom: 1.5rem;
-}
-
-.blog-item .content .intro h5{
-    font-size: 1.5rem;
-}
-
-.blog-item .content .intro h5 i{
-    color: var(--purple);
-    padding-right: 0.5rem;
-}
-
-.blog-item .content .intro h5 span{
-    color: var(--grey);
-}
-
-.blog-item .content .main-heading{
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--white);
-}
-
-.blog-item p{
-    padding: 1rem 0;
-    font-size: 1.6rem;
-    color: var(--grey);
-}
-
-.blog-item .btn{
-    margin-top: 1rem;
-}
-
-/*--------------------- 10- Blog Area CSS (End) ---------------------*/
 
 
 
@@ -983,9 +778,9 @@ header #menu-btn:hover{
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: 2rem;
@@ -995,50 +790,73 @@ header #menu-btn:hover{
     -webkit-box-flex: 1;
     -ms-flex: 1 1 42rem;
         flex: 1 1 42rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
 }
 
 .contact-info h3{
     font-size: 3rem;
-    color: var(--white);
+    color: var(--text);
 }
 
 .contact-info > p{
     font-size: 1.6rem;
-    color: var(--grey);
+    color: var(--text-muted);
     padding: 0.5rem 0;
 }
 
-.contact-info .info-item{
-    padding: 1rem 0;
+.contact-info .social-links{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
 }
 
-.contact-info .info-item .gmail,
-.contact-info .info-item .linkedin,
-.contact-info .info-item .github{
-    text-transform: none;
+.contact-info .social-links a{
+    display: block;
+    border: 0.1rem solid var(--card-border);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--surface);
+    text-decoration: none;
+    color: inherit;
+    -webkit-transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
-.contact-info .info-item h4{
-    font-size: 1.8rem;
-    color: var(--white);
+.contact-info .social-links a:hover{
+    background: rgba(188, 140, 242, 0.08);
+    border-color: var(--purple);
+    -webkit-transform: translateY(-0.2rem);
+    transform: translateY(-0.2rem);
 }
 
-.contact-info .info-item .detail{
+.contact-info .social-links .detail{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    gap: 1rem;
 }
 
-.contact-info .info-item .detail .fas,
-.contact-info .info-item .detail .fab{
+.contact-info .social-links .detail .fab{
     border-radius: 50%;
     color: var(--purple);
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;;
+    display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -1046,38 +864,48 @@ header #menu-btn:hover{
     -ms-flex-align: center;
     align-items: center;
     font-size: 1.5rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    background: rgba(188, 140, 242, 0.12);
 }
 
-.contact-info .info-item .detail p{
+.contact-info .social-links span{
     font-size: 1.6rem;
-    color: var(--grey);
-    line-height: 1.6;
-    padding-left: 1rem;
+    color: var(--text);
+    word-break: break-word;
+    text-transform: lowercase;
 }
 
 .contact-form{
     -webkit-box-flex: 1;
     -ms-flex: 1 1 42rem;
         flex: 1 1 42rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
 }
 
 .contact-form .box{
     width: 100%;
     text-transform: none;
-    color: var(--grey);
+    color: var(--text);
     font-size: 1.6rem;
     border: 0.1rem solid rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     margin: 0.5rem 0;
-    background-color: #222;
-}
-
-.contact-form .box:focus{
-    border-color: var(--white);
+    background-color: var(--surface);
 }
 
 .contact-form .box::placeholder{
-    color: var(--grey);
+    color: var(--text-muted);
+}
+
+.contact-form .box:focus{
+    border-color: var(--purple);
 }
 
 .contact-form textarea{
@@ -1111,11 +939,11 @@ footer .social{
 }
 
 footer .social .fab{
-    background-color: var(--black);
+    background-color: var(--surface);
     border-radius: 50%;
     height: 4rem;
     width: 4rem;
-    color: var(--white);
+    color: var(--text);
     font-size: 2rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1182,3 +1010,4 @@ footer .content p span{
   }
 
 /*--------------------- 13- Scroll-Top (End) ---------------------*/
+
