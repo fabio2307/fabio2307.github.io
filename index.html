@@ -426,8 +426,8 @@
             themeToggle.addEventListener('click', toggleTheme);
             updateThemeIcon(activeTheme);
         }
-
-        const birthDate = new Date(DATA);
+        const date = process.env.MINHA_DATA;
+        const birthDate = new Date(MINHA_DATA);
         const ageSpan = document.getElementById('age');
         if (ageSpan) {
             const today = new Date();
